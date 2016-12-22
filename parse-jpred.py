@@ -4,12 +4,16 @@ import argparse
 import itertools
 
 def parse_jpred(name, jalview):
-    print name
     for line in jalview:
         l = line.split('\t')
         try:
             if l[1] == 'jnetpred':
-                print l[len(l)-1]
+                data = l[len(l)-1].strip()
+                H = data.count('H')
+                E = data.count('E')
+                length = len(data.split('|'))
+                d = [name[:-4], name[-3:], str(length), str(H), str(E), str(float(H)/float(length)*100), str(float(E)/float(length)*100)]
+                print '\t'.join(d)
         except:
             pass
 
