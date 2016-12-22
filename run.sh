@@ -1,12 +1,15 @@
 #!/bin/bash
 
 for i in jpred_data/*; do
-    echo $i
-    for jalview in $i/*.jalview; do
-        echo "$jalview";
-    done
-    for name in $i/*.name; do
-        echo "$name";
+    for file in $i/*; do
+        if [[ $file == *.name ]]
+            then
+                name=$file;
+        fi
+        if [[ $file == *.jalview ]]
+            then
+                jalview=$file;
+        fi
     done
     python parse-jpred.py $name $jalview
 done
