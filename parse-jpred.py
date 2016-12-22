@@ -12,7 +12,7 @@ def parse_jpred(name, jalview):
                 H = data.count('H')
                 E = data.count('E')
                 length = len(data.split('|'))
-                d = [name[:-8], name[-7:][:-4], str(length), str(H), str(E), str(float(H)/float(length)*100), str(float(E)/float(length)*100)]
+                d = [name[:-7], name[-6:][:-3], str(length), str(H), str(E), str(float(H)/float(length)*100), str(float(E)/float(length)*100)]
                 print '\t'.join(d)
         except:
             pass
